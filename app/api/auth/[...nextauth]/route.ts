@@ -44,9 +44,10 @@ const handler  = NextAuth({
                 FacebookProvider({
                     clientId: "khfsljf",
                     clientSecret: "khfsljf"
-                })
+                }),
+               
+                
         ]
-
 })
 
 export {handler as GET , handler as POST}; 
