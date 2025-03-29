@@ -13,6 +13,9 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+
+    // all this data will be sent to the auth provider and can be accessed in the authorize function in the auth provider by crendentials.email and credentials.password
+    // we can also send any other data by adding it to the form data and accessing it in the authorize function in the auth provider
     const result = await signIn("credentials", {
       redirect: false, // Prevents automatic redirection
       email,
