@@ -1,3 +1,4 @@
+import SuccessPopup from "@/components/popup";
 import SignIN from "@/components/SiginButton";
 import SignOut from "@/components/SignoutButton";
 import { getServerSession } from "next-auth"
@@ -20,13 +21,15 @@ export default async function(){
 
     return (
         <div className="flex flex-col gap-10">
-            <SignOut/>
+            {/* <SignOut/>
             <h1>
                 User details coming from the session in the the server component
             </h1>
             <p>
                 {JSON.stringify(session)}
-            </p>
+            </p> */}
+
+            <SuccessPopup/>
         </div>
     )
 }

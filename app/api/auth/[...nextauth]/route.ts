@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
-import FacebookProvider from "next-auth/providers/facebook";
+import GithubProvider from "next-auth/providers/github";
 
 const handler  = NextAuth({
 
@@ -32,23 +32,25 @@ const handler  = NextAuth({
                     } else {
                         // If you return null then an error will be displayed advising the user to check their details.
                         return null
-
                         // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
                     }
                     }
                 }),
                 GoogleProvider({
-                    clientId: "khfsljf",    
-                    clientSecret: "khfsljf"
+                    clientId: process.env.GOOGLE_CLIENT_ID as string,
+                    clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
                 }),
-                FacebookProvider({
-                    clientId: "khfsljf",
-                    clientSecret: "khfsljf"
+                GithubProvider({
+                    clientId: process.env.GITHUB_CLIENT_ID as string,
+                    clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
                 }),
                
                 
         ],
         secret: process.env.NEXTAUTH_SECRET,
+        pages:{  // if custom login page is created then whenever singIn() function is called it redirects to the login page 
+            signIn: '/login'
+        }
 })
 
 export {handler as GET , handler as POST}; 
